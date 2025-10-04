@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://cswm1wwn20v0b"]
+
+[ext_resource type="PackedScene" uid="uid://b87ihdkw1vqx2" path="res://scenes/character.tscn" id="1_w2twt"]
+[ext_resource type="FontFile" uid="uid://b5r2cso0b8f3u" path="res://assets/font/ARCADECLASSIC.TTF" id="2_pw63i"]
+
+[node name="main_scene" type="Node2D"]
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_w2twt")]
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+zoom = Vector2(4.5, 4.5)
+
+[node name="Panel" type="Panel" parent="CharacterBody2D"]
+offset_left = 10.0
+offset_top = -61.0
+offset_right = 104.0
+offset_bottom = -29.0
+
+[node name="Label" type="Label" parent="CharacterBody2D/Panel"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+offset_left = 2.0
+offset_top = 3.0
+offset_right = 94.0
+offset_bottom = 28.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_pw63i")
+theme_override_font_sizes/font_size = 10
+text = "ffhsdfjhqshfjshfjshfhfhsfsjhffhh"
+vertical_alignment = 1
+autowrap_mode = 3
