@@ -427,7 +427,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack_down",
-"speed": 10.0
+"speed": 18.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -456,7 +456,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack_left",
-"speed": 10.0
+"speed": 18.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -485,7 +485,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack_right",
-"speed": 10.0
+"speed": 18.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -514,7 +514,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack_up",
-"speed": 10.0
+"speed": 18.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -751,6 +751,6 @@ animations = [{
 
 [node name="Character_animations" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_dfeyu")
-animation = &"run_down"
+animation = &"attack_up"
 autoplay = "idle_down"
 script = ExtResource("13_fnr6n")

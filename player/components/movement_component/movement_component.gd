@@ -14,7 +14,7 @@ func _ready() -> void:
 
 func movement(delta) -> void:
 	direction = Input.get_vector("left", "right", "up", "down")
-	player_sprite.animate(direction)
+	player_sprite.move(direction)
 	get_parent().velocity = direction * (BASE_SPEED * speed_mult) * delta
 	get_parent().move_and_slide()
 

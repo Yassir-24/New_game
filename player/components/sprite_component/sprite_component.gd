@@ -3,12 +3,16 @@ extends AnimatedSprite2D
 
 # Initialisito l Vector2.DOWN bach matkonch chi probleme
 var previous_direction: Vector2 = Vector2.DOWN
+var is_moving: bool = true
 
 func _ready() -> void:
 	await get_parent().ready
 
 
-func animate(direction: Vector2) -> void:
+func move(direction: Vector2) -> void:
+	if not is_moving:
+		return
+	else:
 		match direction:
 			Vector2.UP:
 				play("run_up")
@@ -35,3 +39,26 @@ func animate(direction: Vector2) -> void:
 							play("idle_right")
 				else:
 					pass
+
+
+func attack():
+	is_moving = false
+	match previous_direction:
+		Vector2.UP:
+			play("attack_up")
+			await animation_finished
+			is_moving = true
+		Vector2.DOWN:
+			play("attack_down")
+			await animation_finished
+			is_moving = true
+		Vector2.LEFT:
+			play("attack_left")
+			await animation_finished
+			is_moving = true
+		Vector2.RIGHT:
+			play("attack_right")
+			await animation_finished
+			is_moving = true
+		_:
+			pass
