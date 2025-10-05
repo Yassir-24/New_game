@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://cx45g8x2y1xva"]
+[gd_scene load_steps=8 format=3 uid="uid://cx45g8x2y1xva"]
 
+[ext_resource type="Script" uid="uid://dj7344qiir0d2" path="res://player/player.gd" id="1_g6k8r"]
 [ext_resource type="PackedScene" uid="uid://e7t4jdys8x86" path="res://player/components/hitbox_component/hitbox_component.tscn" id="1_rkbax"]
 [ext_resource type="PackedScene" uid="uid://blyy5mamxu4we" path="res://player/components/sprite_component/sprite_component.tscn" id="2_g1dw6"]
 [ext_resource type="PackedScene" uid="uid://btbnkfivrlmpv" path="res://player/components/movement_component/movement_component.tscn" id="3_g1dw6"]
@@ -10,6 +11,7 @@
 size = Vector2(20, 34)
 
 [node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_g6k8r")
 
 [node name="HitboxComponent" parent="." instance=ExtResource("1_rkbax")]
 position = Vector2(0, 1)

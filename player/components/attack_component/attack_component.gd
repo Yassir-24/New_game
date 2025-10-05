@@ -1,4 +1,5 @@
 extends Node2D
+class_name PlayerAttackComponent
 
 @export var player_sprite: AnimatedSprite2D
 

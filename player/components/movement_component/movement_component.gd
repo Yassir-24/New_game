@@ -1,4 +1,6 @@
 extends Node2D
+class_name PlayerMovementComponent
+
 # Movement
 const BASE_SPEED: int = 10000
 var speed_mult: float = 1.0

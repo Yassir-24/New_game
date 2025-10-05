@@ -1,4 +1,5 @@
 extends AnimatedSprite2D
+class_name PlayerSpriteComponent
 
 
 # Initialisito l Vector2.DOWN bach matkonch chi probleme
