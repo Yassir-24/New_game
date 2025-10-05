@@ -1,0 +1,79 @@
+[gd_scene load_steps=12 format=3 uid="uid://0f8csykyi8rq"]
+
+[ext_resource type="Script" uid="uid://bgc6w8cjs8bsr" path="res://scenes/World_script.gd" id="1_32378"]
+[ext_resource type="PackedScene" uid="uid://fuesxls7bb2w" path="res://scenes/Character.tscn" id="1_e3fa1"]
+[ext_resource type="Texture2D" uid="uid://jvf862nl616v" path="res://icon.svg" id="2_5wdvg"]
+[ext_resource type="Script" uid="uid://dp2lsnx4fj1b0" path="res://scenes/enemy_area2d_script.gd" id="3_brsxu"]
+[ext_resource type="PackedScene" uid="uid://bs0m36py6bo4c" path="res://scenes/hearts.tscn" id="3_t1rhp"]
+[ext_resource type="Script" uid="uid://uunsjiroqcu0" path="res://scenes/character_on_enemy.gd" id="4_7exka"]
+[ext_resource type="Script" uid="uid://cvdperbtau4mr" path="res://scenes/weapon_area_2d.gd" id="6_p3mmm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_brsxu"]
+radius = 86.8204
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7exka"]
+radius = 91.4581
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t1rhp"]
+radius = 8.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mbi2d"]
+size = Vector2(52, 32)
+
+[node name="Main_Node" type="Node2D"]
+script = ExtResource("1_32378")
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(-141, 39)
+scale = Vector2(0.316406, 0.3125)
+texture = ExtResource("2_5wdvg")
+
+[node name="object_area" type="Area2D" parent="Icon"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Icon/object_area"]
+position = Vector2(0.790123, 0)
+shape = SubResource("CircleShape2D_brsxu")
+
+[node name="enemy_placeholder" type="Sprite2D" parent="."]
+position = Vector2(-2, -77)
+scale = Vector2(0.382813, 0.429688)
+texture = ExtResource("2_5wdvg")
+
+[node name="enemy_area" type="Area2D" parent="enemy_placeholder"]
+script = ExtResource("3_brsxu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy_placeholder/enemy_area"]
+shape = SubResource("CircleShape2D_7exka")
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_e3fa1")]
+position = Vector2(-23, 15)
+
+[node name="characeter_area2d" type="Area2D" parent="CharacterBody2D"]
+script = ExtResource("4_7exka")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/characeter_area2d"]
+position = Vector2(0, -10)
+shape = SubResource("CircleShape2D_t1rhp")
+
+[node name="weapon_area2d2" type="Area2D" parent="CharacterBody2D"]
+position = Vector2(0, -18)
+script = ExtResource("6_p3mmm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/weapon_area2d2"]
+position = Vector2(0, 14)
+shape = SubResource("RectangleShape2D_mbi2d")
+
+[node name="Hearts" parent="CharacterBody2D" instance=ExtResource("3_t1rhp")]
+position = Vector2(-132, -83)
+scale = Vector2(0.7, 0.7)
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+position = Vector2(0, -14)
+zoom = Vector2(4, 4)
+
+[node name="reset_button" type="Button" parent="."]
+offset_left = -62.0
+offset_top = -40.0
+offset_right = 62.0
+offset_bottom = -9.0
+text = "You died, reset"
