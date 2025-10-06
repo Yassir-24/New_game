@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3qo0sc11oqd8"]
+
+[ext_resource type="Script" uid="uid://ch63ulpkxqt5c" path="res://player/components/health_component/health_component.gd" id="1_esr8p"]
+
+[node name="HealthComponent" type="Control"]
+custom_minimum_size = Vector2(32, 4)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 32.0
+offset_bottom = 4.0
+script = ExtResource("1_esr8p")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+custom_minimum_size = Vector2(32, 4)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 5
+value = 50.0
+rounded = true
+show_percentage = false

@@ -23,6 +23,10 @@ Linker="*res://linker.gd"
 
 project/assembly_name="New_Game"
 
+[global_group]
+
+Enemy="All enemies in the game should have this group"
+
 [input]
 
 left={
