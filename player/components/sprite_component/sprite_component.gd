@@ -9,7 +9,6 @@ var is_moving: bool = true
 func _ready() -> void:
 	await get_parent().ready
 
-
 func move(direction: Vector2) -> void:
 	if not is_moving:
 		return
@@ -40,7 +39,6 @@ func move(direction: Vector2) -> void:
 							play("idle_right")
 				else:
 					pass
-
 
 func attack():
 	is_moving = false

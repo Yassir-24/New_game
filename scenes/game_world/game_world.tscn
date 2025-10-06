@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://c17dd17tk0unc"]
+[gd_scene load_steps=5 format=3 uid="uid://c17dd17tk0unc"]
 
 [ext_resource type="PackedScene" uid="uid://cx45g8x2y1xva" path="res://player/player.tscn" id="1_uie3o"]
 [ext_resource type="Texture2D" uid="uid://jvf862nl616v" path="res://icon.svg" id="2_254f3"]
+[ext_resource type="Script" uid="uid://b1rb5h14digb8" path="res://scenes/game_world/temp_script_area.gd" id="3_mjgxe"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_254f3"]
+size = Vector2(140.43102, 149.05997)
 
 [node name="GameWorld" type="Node2D"]
 
@@ -11,3 +15,11 @@
 position = Vector2(98, 37)
 scale = Vector2(0.453125, 0.390625)
 texture = ExtResource("2_254f3")
+
+[node name="Area2D" type="Area2D" parent="Icon"]
+script = ExtResource("3_mjgxe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Icon/Area2D"]
+position = Vector2(2.2069008, -2.5599988)
+scale = Vector2(1, 1.0000004)
+shape = SubResource("RectangleShape2D_254f3")
