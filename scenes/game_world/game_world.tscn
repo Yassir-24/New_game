@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://c17dd17tk0unc"]
+[gd_scene load_steps=6 format=3 uid="uid://c17dd17tk0unc"]
 
 [ext_resource type="PackedScene" uid="uid://cx45g8x2y1xva" path="res://player/player.tscn" id="1_uie3o"]
+[ext_resource type="Script" uid="uid://cs1b3bm0c4wmh" path="res://scenes/game_world/game_world.gd" id="1_yb5st"]
 [ext_resource type="Texture2D" uid="uid://jvf862nl616v" path="res://icon.svg" id="2_254f3"]
 [ext_resource type="PackedScene" uid="uid://dcv6slkwymwcj" path="res://scenes/game_world/hud/hud.tscn" id="3_mjgxe"]
 
@@ -8,6 +9,7 @@
 size = Vector2(127.99997, 127.99999)
 
 [node name="GameWorld" type="Node2D"]
+script = ExtResource("1_yb5st")
 
 [node name="Player" parent="." instance=ExtResource("1_uie3o")]
 
