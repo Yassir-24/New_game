@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cx45g8x2y1xva"]
+[gd_scene load_steps=10 format=3 uid="uid://cx45g8x2y1xva"]
 
 [ext_resource type="Script" uid="uid://dj7344qiir0d2" path="res://player/player.gd" id="1_g6k8r"]
 [ext_resource type="PackedScene" uid="uid://e7t4jdys8x86" path="res://player/components/hitbox_component/hitbox_component.tscn" id="1_rkbax"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://btbnkfivrlmpv" path="res://player/components/movement_component/movement_component.tscn" id="3_g1dw6"]
 [ext_resource type="PackedScene" uid="uid://wrrb76v852us" path="res://player/components/camera_component/camera_component.tscn" id="4_yw30f"]
 [ext_resource type="PackedScene" uid="uid://djjhamxkbg6ot" path="res://player/components/attack_component/attack_component.tscn" id="5_qjkh3"]
-[ext_resource type="PackedScene" uid="uid://d3qo0sc11oqd8" path="res://player/components/health_component/health_component.tscn" id="7_boad6"]
 [ext_resource type="PackedScene" uid="uid://bdlcc2e4jk65u" path="res://player/components/hurtbox_component/hurtbox_component.tscn" id="8_rgyib"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g1dw6"]
@@ -35,14 +34,7 @@ process_callback = 0
 [node name="AttackComponent" parent="." node_paths=PackedStringArray("player_sprite") instance=ExtResource("5_qjkh3")]
 player_sprite = NodePath("../sprite_component")
 
-[node name="HealthComponent" parent="." instance=ExtResource("7_boad6")]
-offset_left = -16.0
-offset_top = -21.0
-offset_right = 16.0
-offset_bottom = -17.0
-
-[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("8_rgyib")]
-health_component = NodePath("../HealthComponent")
+[node name="HurtboxComponent" parent="." instance=ExtResource("8_rgyib")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
 position = Vector2(0, 1)

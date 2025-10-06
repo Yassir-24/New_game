@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcv6slkwymwcj"]
+
+[ext_resource type="Script" uid="uid://cim3t1y724cva" path="res://scenes/game_world/hud/hud.gd" id="1_hgmof"]
+[ext_resource type="PackedScene" uid="uid://cts6ia7xeh1wt" path="res://scenes/game_world/hud/player_health/player_health.tscn" id="2_6q7dj"]
+
+[node name="Hud" type="CanvasLayer"]
+script = ExtResource("1_hgmof")
+
+[node name="PlayerHealth" parent="." instance=ExtResource("2_6q7dj")]

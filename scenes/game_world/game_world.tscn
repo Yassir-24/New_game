@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://c17dd17tk0unc"]
+[gd_scene load_steps=5 format=3 uid="uid://c17dd17tk0unc"]
 
 [ext_resource type="PackedScene" uid="uid://cx45g8x2y1xva" path="res://player/player.tscn" id="1_uie3o"]
 [ext_resource type="Texture2D" uid="uid://jvf862nl616v" path="res://icon.svg" id="2_254f3"]
+[ext_resource type="PackedScene" uid="uid://dcv6slkwymwcj" path="res://scenes/game_world/hud/hud.tscn" id="3_mjgxe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_254f3"]
 size = Vector2(127.99997, 127.99999)
@@ -21,3 +22,5 @@ texture = ExtResource("2_254f3")
 position = Vector2(0, -2.2888184e-05)
 scale = Vector2(1, 1.0000005)
 shape = SubResource("RectangleShape2D_254f3")
+
+[node name="Hud" parent="." instance=ExtResource("3_mjgxe")]
