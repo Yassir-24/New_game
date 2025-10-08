@@ -1,0 +1,35 @@
+[gd_scene load_steps=8 format=3 uid="uid://c17dd17tk0unc"]
+
+[ext_resource type="PackedScene" uid="uid://cx45g8x2y1xva" path="res://player/player.tscn" id="1_uie3o"]
+[ext_resource type="Script" uid="uid://cs1b3bm0c4wmh" path="res://scenes/game_world/game_world.gd" id="1_yb5st"]
+[ext_resource type="Texture2D" uid="uid://jvf862nl616v" path="res://icon.svg" id="2_254f3"]
+[ext_resource type="PackedScene" uid="uid://bphiybr5atbe2" path="res://world/plains/plains.tscn" id="2_liei2"]
+[ext_resource type="PackedScene" uid="uid://dcv6slkwymwcj" path="res://scenes/game_world/hud/hud.tscn" id="3_mjgxe"]
+[ext_resource type="PackedScene" uid="uid://bfxgilv26y1nu" path="res://enemies/frozen_soul/frozen_soul.tscn" id="5_6sh6l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_254f3"]
+size = Vector2(127.99997, 127.99999)
+
+[node name="GameWorld" type="Node2D"]
+script = ExtResource("1_yb5st")
+
+[node name="Plains" parent="." instance=ExtResource("2_liei2")]
+
+[node name="Icon" type="Sprite2D" parent="." groups=["Enemy"]]
+position = Vector2(98, 37)
+scale = Vector2(0.453125, 0.390625)
+texture = ExtResource("2_254f3")
+
+[node name="Area2D" type="Area2D" parent="Icon"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Icon/Area2D"]
+position = Vector2(0, -2.2888184e-05)
+scale = Vector2(1, 1.0000005)
+shape = SubResource("RectangleShape2D_254f3")
+
+[node name="Hud" parent="." instance=ExtResource("3_mjgxe")]
+
+[node name="FrozenSoul" parent="." instance=ExtResource("5_6sh6l")]
+position = Vector2(-85, 44)
+
+[node name="Player" parent="." instance=ExtResource("1_uie3o")]
