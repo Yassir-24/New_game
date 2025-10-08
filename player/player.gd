@@ -3,3 +3,4 @@ class_name Player
 
 func _ready() -> void:
 	Linker.player = self
+	z_index = 1
