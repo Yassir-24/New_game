@@ -14,10 +14,6 @@ size = Vector2(127.99997, 127.99999)
 script = ExtResource("1_yb5st")
 
 <<<<<<< Updated upstream
-[node name="Plains" parent="." instance=ExtResource("2_liei2")]
-
-[node name="Icon" type="Sprite2D" parent="." groups=["Enemy"]]
-=======
 [node name="Player" parent="." instance=ExtResource("1_uie3o")]
 
 [node name="Node2D" type="Node2D" parent="."]
