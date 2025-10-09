@@ -7,3 +7,4 @@ func _on_area_entered(area: Area2D) -> void:
 		if "damage" in area.get_parent():
 			damage = area.get_parent().damage
 		Linker.hud.player_health.health = Linker.hud.player_health.health - damage
+	

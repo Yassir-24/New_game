@@ -1,0 +1,27 @@
+[gd_scene load_steps=7 format=3 uid="uid://b8gp1752la5l8"]
+
+[ext_resource type="PackedScene" uid="uid://b6lqjp1h7kosp" path="res://enemy/sprite_enemy_component.tscn" id="1_ly016"]
+[ext_resource type="PackedScene" uid="uid://d3lryview08p4" path="res://enemy/target_area.tscn" id="2_lly8v"]
+[ext_resource type="Script" uid="uid://0aup7wc5voq2" path="res://enemy/target_area.gd" id="3_wf11c"]
+[ext_resource type="PackedScene" uid="uid://bnrln8oh60y7l" path="res://enemy/EnemyMovement_component.tscn" id="4_ncvnn"]
+[ext_resource type="Script" uid="uid://cuh7hyk1ta3a7" path="res://enemy/enemy_movement_component.gd" id="5_bx5m5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ncvnn"]
+radius = 87.46428
+
+[node name="EnemyComponent" type="CharacterBody2D"]
+
+[node name="SpriteEnemyComponent" parent="." instance=ExtResource("1_ly016")]
+position = Vector2(6, -20)
+frame_progress = 0.0
+
+[node name="TargetArea" parent="." instance=ExtResource("2_lly8v")]
+visible = false
+script = ExtResource("3_wf11c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TargetArea"]
+position = Vector2(-1, -14)
+shape = SubResource("CircleShape2D_ncvnn")
+
+[node name="EnemyMovementComponent" parent="." instance=ExtResource("4_ncvnn")]
+script = ExtResource("5_bx5m5")

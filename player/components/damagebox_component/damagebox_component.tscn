@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://b002cuiqd0clx"]
+
+[node name="DamageboxComponent" type="Area2D"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cx45g8x2y1xva"]
+[gd_scene load_steps=13 format=3 uid="uid://cx45g8x2y1xva"]
 
 [ext_resource type="Script" uid="uid://dj7344qiir0d2" path="res://player/player.gd" id="1_g6k8r"]
 [ext_resource type="PackedScene" uid="uid://e7t4jdys8x86" path="res://player/components/hitbox_component/hitbox_component.tscn" id="1_rkbax"]
@@ -6,13 +6,18 @@
 [ext_resource type="PackedScene" uid="uid://btbnkfivrlmpv" path="res://player/components/movement_component/movement_component.tscn" id="3_g1dw6"]
 [ext_resource type="PackedScene" uid="uid://wrrb76v852us" path="res://player/components/camera_component/camera_component.tscn" id="4_yw30f"]
 [ext_resource type="PackedScene" uid="uid://djjhamxkbg6ot" path="res://player/components/attack_component/attack_component.tscn" id="5_qjkh3"]
+[ext_resource type="PackedScene" uid="uid://b002cuiqd0clx" path="res://player/components/damagebox_component/damagebox_component.tscn" id="8_hg6s5"]
 [ext_resource type="PackedScene" uid="uid://bdlcc2e4jk65u" path="res://player/components/hurtbox_component/hurtbox_component.tscn" id="8_rgyib"]
+[ext_resource type="Script" uid="uid://deh5nl56r7764" path="res://player/components/damagebox_component/damagebox_component.gd" id="9_8t03j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g1dw6"]
 size = Vector2(20, 34)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hg6s5"]
 height = 34.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2ieo8"]
+radius = 43.011627
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_g6k8r")
@@ -39,3 +44,9 @@ player_sprite = NodePath("../sprite_component")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
 position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_hg6s5")
+
+[node name="DamageboxComponent" parent="." instance=ExtResource("8_hg6s5")]
+script = ExtResource("9_8t03j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageboxComponent"]
+shape = SubResource("CircleShape2D_2ieo8")
