@@ -51,9 +51,9 @@ func dash() -> void:
 func create_shadow() -> void:
 	for i in range(1, 6):
 		var ghost: AnimatedSprite2D = player_sprite.duplicate()
-		get_parent().add_child(ghost)
+		Linker.world.add_child(ghost)
 		ghost.play(player_sprite.animation)
-		ghost.position = player_sprite.position - Vector2(direction.x * i * 10, direction.y * i * 10)
+		ghost.global_position = player_sprite.global_position
 		ghost.modulate.a = 0.3
 		var tween: Tween = get_tree().create_tween()
 		tween.tween_property(ghost, "modulate:a", 0.0, 0.3)
