@@ -1,23 +1,28 @@
-[gd_scene load_steps=2 format=3 uid="uid://ce8vkq1t4ugnw"]
+[gd_scene load_steps=3 format=3 uid="uid://ce8vkq1t4ugnw"]
 
-[ext_resource type="Texture2D" uid="uid://cxueiqkipvpwo" path="res://util/interactable/message_box/message_box.png" id="1_jbnq5"]
+[ext_resource type="Texture2D" uid="uid://d16oru3o8odbe" path="res://util/interactable/message_box/message_box.png" id="1_jbnq5"]
+[ext_resource type="Script" uid="uid://crbytoppyeia5" path="res://util/interactable/message_box/message_box.gd" id="1_va4x2"]
 
 [node name="MessageBox" type="Control"]
-custom_minimum_size = Vector2(1000, 300)
+custom_minimum_size = Vector2(1100, 426)
 layout_mode = 3
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -500.0
-offset_top = -300.0
-offset_right = 500.0
+offset_left = -550.0
+offset_top = -426.0
+offset_right = 550.0
 grow_horizontal = 2
 grow_vertical = 0
+script = ExtResource("1_va4x2")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_top = 430.0
+offset_right = 1100.0
+offset_bottom = 830.0
 texture = ExtResource("1_jbnq5")
+
+[connection signal="gui_input" from="TextureRect" to="." method="_on_texture_rect_gui_input"]
