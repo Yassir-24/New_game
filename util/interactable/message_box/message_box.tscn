@@ -19,10 +19,10 @@ grow_vertical = 0
 script = ExtResource("1_va4x2")
 
 [node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_top = 430.0
 offset_right = 1100.0
-offset_bottom = 830.0
+offset_bottom = 400.0
 texture = ExtResource("1_jbnq5")
 
 [connection signal="gui_input" from="TextureRect" to="." method="_on_texture_rect_gui_input"]

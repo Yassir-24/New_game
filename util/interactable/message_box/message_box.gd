@@ -20,13 +20,13 @@ func _ready() -> void:
 
 func pullup() -> void:
 	var tween: Tween = get_tree().create_tween()
-	tween.tween_property(msgbox, "position", Vector2(0,0), 0.3)
+	tween.tween_property(msgbox, "modulate:a", 1, 0.1)
 	tween.set_ease(Tween.EASE_IN)
 	tween.set_trans(Tween.TRANS_BOUNCE)
 
 func pulldown() -> void:
 	var tween: Tween = get_tree().create_tween()
-	tween.tween_property(msgbox, "position", Vector2(0,430), 0.3)
+	tween.tween_property(msgbox, "modulate:a", 0, 0.1)
 	tween.set_ease(Tween.EASE_IN)
 	tween.set_trans(Tween.TRANS_BOUNCE)
 
