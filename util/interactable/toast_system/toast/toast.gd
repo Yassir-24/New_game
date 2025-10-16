@@ -11,6 +11,7 @@ const DANGER: int = 2
 
 var type: int = 0
 var message: String = "You just ate a pumpkin!"
+var timer: Timer
 
 func _ready() -> void:
 	label.text = message
