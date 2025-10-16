@@ -1,0 +1,58 @@
+[gd_scene load_steps=4 format=3 uid="uid://chpxmrs6wvq8x"]
+
+[ext_resource type="Script" uid="uid://c4y3fjcdcogmh" path="res://util/interactable/toast_system/toast/toast.gd" id="1_cmxuf"]
+[ext_resource type="FontFile" uid="uid://bmm2xgn8l3w8v" path="res://assets/fonts/alagard.ttf" id="1_y7qi5"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_238ps"]
+font = ExtResource("1_y7qi5")
+font_size = 32
+
+[node name="Toast" type="Control"]
+custom_minimum_size = Vector2(512, 80)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = -40.0
+offset_right = 256.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cmxuf")
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(500, 68)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -34.0
+offset_right = 250.0
+offset_bottom = 34.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="."]
+custom_minimum_size = Vector2(464, 56)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -232.0
+offset_top = -28.0
+offset_right = 232.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "You just ate a pumpkin!"
+label_settings = SubResource("LabelSettings_238ps")
+vertical_alignment = 1
+clip_text = true

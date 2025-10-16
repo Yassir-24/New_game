@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://dumibaib7h162"]
+
+[ext_resource type="Script" uid="uid://dqwdav84fdxm0" path="res://util/interactable/toast_system/toast_box/toast_box.gd" id="1_qtugk"]
+
+[node name="ToastBox" type="VBoxContainer"]
+custom_minimum_size = Vector2(562, 562)
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -562.0
+offset_top = -587.0
+offset_bottom = -25.0
+grow_horizontal = 0
+grow_vertical = 0
+alignment = 2
+script = ExtResource("1_qtugk")
