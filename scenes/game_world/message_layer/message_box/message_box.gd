@@ -18,12 +18,23 @@ var icon: Texture2D
 @onready var title_ui: Label = $Title
 @onready var message_ui: Label = $Message
 
+func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_WHEN_PAUSED
+	for child in get_children():
+		child.process_mode = Node.PROCESS_MODE_WHEN_PAUSED
+
 
 func open() -> void:
+	# Won't be a case unless a message box awaits for a timer
+	for child in Linker.msglayer.get_children():
+		if child is MessageBox:
+			return
+	
 	if before.is_valid():
 		before.call()
 	
 	Linker.msglayer.add_child(self)
+	get_tree().paused = true
 	
 	setup_visuals()
 	await pullup()
@@ -53,6 +64,7 @@ static func build(
 
 func pullup() -> Signal:
 	var tween: Tween = get_tree().create_tween()
+	tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
 	tween.tween_property(background_ui, "modulate:a", 1, 0.1)
 	tween.set_ease(Tween.EASE_IN)
 	tween.set_trans(Tween.TRANS_BOUNCE)
@@ -60,6 +72,7 @@ func pullup() -> Signal:
 
 
 func close() -> void:
+	get_tree().paused = false
 	background_ui.modulate.a = 0
 	icon_ui.modulate.a = 0
 	title_ui.modulate.a = 0
@@ -84,7 +97,7 @@ func setup_text() -> void:
 		if text_finished == true:
 			break
 		message_ui.visible_characters += 1
-		await get_tree().create_timer(WORD_DELAY).timeout
+		await get_tree().create_timer(WORD_DELAY, true).timeout
 	text_finished = true
 
 
