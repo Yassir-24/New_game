@@ -11,3 +11,6 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("attack"):
 		player_sprite.attack()
+		await get_tree().create_timer(1).timeout
+		var msg: MessageBox = MessageBox.build()
+		msg.open()

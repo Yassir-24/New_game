@@ -1,73 +1,89 @@
 extends Control
 class_name MessageBox
 
-var interactable: Interactable
 var text_finished: bool = false
 const WORD_DELAY: float = 0.05
-
-@onready var background: TextureRect = $Background
-@onready var icon: TextureRect = $Icon
-@onready var title: Label = $Title
-@onready var message: Label = $Message
+const MESSAGE_BOX = preload("uid://ce8vkq1t4ugnw")
 
 
-func _ready() -> void:
-	#await get_tree().create_timer(1).timeout
-	interactable = Interactable.new()
-	if interactable.before.is_valid():
-		interactable.before.call()
+var before: Callable
+var after: Callable
+var title: String
+var message: String
+var icon: Texture2D
+
+
+@onready var background_ui: TextureRect = $Background
+@onready var icon_ui: TextureRect = $Icon
+@onready var title_ui: Label = $Title
+@onready var message_ui: Label = $Message
+
+
+func open() -> void:
+	if before.is_valid():
+		before.call()
+	
+	Linker.msglayer.add_child(self)
 	
 	setup_visuals()
-	await open()
+	await pullup()
 	setup_text()
 
-	if interactable.after.is_valid():
-		interactable.after.call()
+	if after.is_valid():
+		after.call()
+
+static func build(
+	_title: String = "Title",
+	_message: String = "This is a debug message, it should not show up in production. If this is shown then we messed up.",
+	_icon: Texture2D = load("res://icon.svg"),
+	_before: Callable = func() -> void: return,
+	_after: Callable = func() -> void: return
+	
+) -> MessageBox:
+	
+	var box: MessageBox = MESSAGE_BOX.instantiate()
+	box.title = _title
+	box.message = _message
+	box.icon = _icon
+	box.before = _before
+	box.after = _after
+	return box
 
 
 
-func open() -> Signal:
+func pullup() -> Signal:
 	var tween: Tween = get_tree().create_tween()
-	tween.tween_property(background, "modulate:a", 1, 0.1)
+	tween.tween_property(background_ui, "modulate:a", 1, 0.1)
 	tween.set_ease(Tween.EASE_IN)
 	tween.set_trans(Tween.TRANS_BOUNCE)
 	return tween.finished
 
+
 func close() -> void:
-	background.modulate.a = 0
-	icon.modulate.a = 0
-	title.modulate.a = 0
-	message.modulate.a = 0
+	background_ui.modulate.a = 0
+	icon_ui.modulate.a = 0
+	title_ui.modulate.a = 0
+	message_ui.modulate.a = 0
 	queue_free()
 
 
-
 func setup_visuals() -> void:
-	# Icon
-	if interactable.icon == null:
-		icon.texture = load("res://icon.svg")
-	else:
-		icon.texture = interactable.icon
-	
-	# Title
-	if interactable.title == null or interactable.title.is_empty():
-		title.text = "Title"
-	else:
-		title.text = interactable.title
+	icon_ui.texture = icon
+	title_ui.text = title
 
 func setup_text() -> void:
-	message.text = ""
-	message.visible_characters = 0
-	message.visible_characters_behavior = TextServer.VC_CHARS_AFTER_SHAPING
+	message_ui.text = ""
+	message_ui.visible_characters = 0
+	message_ui.visible_characters_behavior = TextServer.VC_CHARS_AFTER_SHAPING
 	
-	if interactable.message == null or interactable.message.is_empty():
-		message.text = "Hello, this is a test paragraph for the game. The game which is developed by Youssef and Yassir. This paragraph only serves as a placeholder to show how long we can make a text. The text should be readable and easy to understand and comprehend. Which is the main goal for this whole text box. It should also allow for fairely long strings of texts just in case we have a long monologue, but that's for another day."
+	if message == null or message.is_empty():
+		message_ui.text = "Hello, this is a test paragraph for the game. The game which is developed by Youssef and Yassir. This paragraph only serves as a placeholder to show how long we can make a text. The text should be readable and easy to understand and comprehend. Which is the main goal for this whole text box. It should also allow for fairely long strings of texts just in case we have a long monologue, but that's for another day."
 	else:
-		message.text = interactable.message
-	for letter in message.text:
+		message_ui.text = message
+	for letter in message_ui.text:
 		if text_finished == true:
 			break
-		message.visible_characters += 1
+		message_ui.visible_characters += 1
 		await get_tree().create_timer(WORD_DELAY).timeout
 	text_finished = true
 
@@ -77,5 +93,5 @@ func _on_background_gui_input(event: InputEvent) -> void:
 		if text_finished:
 			close()
 		else:
-			message.visible_characters = -1
+			message_ui.visible_characters = -1
 			text_finished = true

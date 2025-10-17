@@ -1,3 +1,6 @@
-[gd_scene format=3 uid="uid://ck7ns8s6w1fb1"]
+[gd_scene load_steps=2 format=3 uid="uid://ck7ns8s6w1fb1"]
+
+[ext_resource type="Script" uid="uid://b02857kw6w5gq" path="res://scenes/game_world/message_layer/message_layer.gd" id="1_65vxu"]
 
 [node name="MessageLayer" type="CanvasLayer"]
+script = ExtResource("1_65vxu")

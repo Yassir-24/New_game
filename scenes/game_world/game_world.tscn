@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c17dd17tk0unc"]
+[gd_scene load_steps=9 format=3 uid="uid://c17dd17tk0unc"]
 
 [ext_resource type="PackedScene" uid="uid://cx45g8x2y1xva" path="res://player/player.tscn" id="1_uie3o"]
 [ext_resource type="Script" uid="uid://cs1b3bm0c4wmh" path="res://scenes/game_world/game_world.gd" id="1_yb5st"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bphiybr5atbe2" path="res://world/plains/plains.tscn" id="2_liei2"]
 [ext_resource type="PackedScene" uid="uid://dcv6slkwymwcj" path="res://scenes/game_world/hud/hud.tscn" id="3_mjgxe"]
 [ext_resource type="PackedScene" uid="uid://bfxgilv26y1nu" path="res://enemies/frozen_soul/frozen_soul.tscn" id="5_6sh6l"]
+[ext_resource type="PackedScene" uid="uid://ck7ns8s6w1fb1" path="res://scenes/game_world/message_layer/message_layer.tscn" id="7_nxv6a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_254f3"]
 size = Vector2(127.99997, 127.99999)
@@ -33,3 +34,5 @@ shape = SubResource("RectangleShape2D_254f3")
 position = Vector2(-85, 44)
 
 [node name="Player" parent="." instance=ExtResource("1_uie3o")]
+
+[node name="MessageLayer" parent="." instance=ExtResource("7_nxv6a")]
