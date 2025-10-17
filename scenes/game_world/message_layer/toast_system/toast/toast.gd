@@ -15,7 +15,7 @@ var timer: Timer
 
 func _ready() -> void:
 	label.text = message
-	Log.send(Log.DEBUG, "Toast is ready!")
+	Log.send(Log.DEBUG, "Toast is ready: " + message)
 
 
 static func cook(toast_type: int, toast_message:String) -> Toast:

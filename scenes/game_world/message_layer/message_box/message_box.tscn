@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://ce8vkq1t4ugnw"]
 
-[ext_resource type="Texture2D" uid="uid://d16oru3o8odbe" path="res://util/interactable/message_box/message_box.png" id="1_jbnq5"]
-[ext_resource type="Script" uid="uid://crbytoppyeia5" path="res://util/interactable/message_box/message_box.gd" id="1_va4x2"]
+[ext_resource type="Texture2D" uid="uid://d16oru3o8odbe" path="res://scenes/game_world/message_layer/message_box/message_box.png" id="1_jbnq5"]
+[ext_resource type="Script" uid="uid://crbytoppyeia5" path="res://scenes/game_world/message_layer/message_box/message_box.gd" id="1_va4x2"]
 [ext_resource type="FontFile" uid="uid://bkk5opijyna2g" path="res://assets/fonts/Pixelcastle-Regular.otf" id="3_r7wt0"]
 [ext_resource type="FontFile" uid="uid://bmm2xgn8l3w8v" path="res://assets/fonts/alagard.ttf" id="4_uqsny"]
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://chpxmrs6wvq8x"]
 
-[ext_resource type="Script" uid="uid://c4y3fjcdcogmh" path="res://util/interactable/toast_system/toast/toast.gd" id="1_cmxuf"]
+[ext_resource type="Script" uid="uid://c4y3fjcdcogmh" path="res://scenes/game_world/message_layer/toast_system/toast/toast.gd" id="1_cmxuf"]
 [ext_resource type="FontFile" uid="uid://bmm2xgn8l3w8v" path="res://assets/fonts/alagard.ttf" id="1_y7qi5"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_238ps"]
