@@ -18,7 +18,6 @@ config/icon="res://icon.svg"
 [autoload]
 
 Linker="*res://linker.gd"
-Enums="*res://enums.gd"
 Log="*res://log.gd"
 
 [debug]
