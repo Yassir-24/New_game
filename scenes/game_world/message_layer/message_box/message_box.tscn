@@ -14,6 +14,8 @@ font_color = Color(0.33333334, 0.08235294, 0.043137256, 1)
 font = ExtResource("4_uqsny")
 font_size = 30
 font_color = Color(0.33333334, 0.08235294, 0.043137256, 1)
+shadow_color = Color(0.4745098, 0.24313726, 0.11764706, 0.20784314)
+shadow_offset = Vector2(-2, 1)
 
 [node name="MessageBox" type="Control"]
 custom_minimum_size = Vector2(1100, 426)

@@ -19,6 +19,7 @@ var icon: Texture2D
 @onready var message_ui: Label = $Message
 
 func _ready() -> void:
+	# Make message box run only when game is paused, rah get_tree().paused = true is called later
 	process_mode = Node.PROCESS_MODE_WHEN_PAUSED
 	for child in get_children():
 		child.process_mode = Node.PROCESS_MODE_WHEN_PAUSED
@@ -29,6 +30,8 @@ func open() -> void:
 	for child in Linker.msglayer.get_children():
 		if child is MessageBox:
 			return
+	
+	Linker.msglayer.darken()
 	
 	if before.is_valid():
 		before.call()
@@ -77,6 +80,7 @@ func close() -> void:
 	icon_ui.modulate.a = 0
 	title_ui.modulate.a = 0
 	message_ui.modulate.a = 0
+	Linker.msglayer.undarken()
 	queue_free()
 
 
