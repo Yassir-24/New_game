@@ -14,4 +14,4 @@ var toast: Toast
 var type: Type
 
 func interact() -> void:
-	Log.send(Log.DEBUG, "Interaction happened.")
+	Log.debug("Interaction happened.")

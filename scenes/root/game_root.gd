@@ -8,7 +8,7 @@ const GAME_WORLD_SCENE: PackedScene = preload("res://scenes/game_world/game_worl
 func _ready() -> void:
 	Linker.root = self
 	main_menu()
-	Log.send(Log.DEBUG, "Ready function finished for: " + name)
+	Log.debug("Ready function finished for: " + name)
 
 
 func clear() -> void:

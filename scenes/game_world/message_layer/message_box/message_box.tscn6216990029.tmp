@@ -1,0 +1,186 @@
+[gd_scene load_steps=7 format=3 uid="uid://ce8vkq1t4ugnw"]
+
+[ext_resource type="Texture2D" uid="uid://d16oru3o8odbe" path="res://scenes/game_world/message_layer/message_box/message_box.png" id="1_jbnq5"]
+[ext_resource type="FontFile" uid="uid://bkk5opijyna2g" path="res://assets/fonts/Pixelcastle-Regular.otf" id="3_r7wt0"]
+[ext_resource type="FontFile" uid="uid://bmm2xgn8l3w8v" path="res://assets/fonts/alagard.ttf" id="4_uqsny"]
+
+[sub_resource type="GDScript" id="GDScript_dso0q"]
+script/source = "extends Control
+class_name MessageBox
+
+var text_finished: bool = false
+const WORD_DELAY: float = 0.05
+const MESSAGE_BOX = preload(\"uid://ce8vkq1t4ugnw\")
+
+
+var before: Callable
+var after: Callable
+var title: String
+var message: String
+var icon: Texture2D
+
+
+@onready var background_ui: TextureRect = $Background
+@onready var icon_ui: TextureRect = $Icon
+@onready var title_ui: Label = $Title
+@onready var message_ui: Label = $Message
+
+func _ready() -> void:
+	# Make message box run only when game is paused, rah get_tree().paused = true is called later
+	process_mode = Node.PROCESS_MODE_WHEN_PAUSED
+	for child in get_children():
+		child.process_mode = Node.PROCESS_MODE_WHEN_PAUSED
+
+
+func open() -> void:
+	# Won't be a case unless a message box awaits for a timer
+	for child in Linker.msglayer.get_children():
+		if child is MessageBox:
+			return
+	
+	Linker.msglayer.darken()
+	
+	if before.is_valid():
+		before.call()
+	
+	Linker.msglayer.add_child(self)
+	get_tree().paused = true
+	
+	setup_visuals()
+	await pullup()
+	setup_text()
+
+	if after.is_valid():
+		after.call()
+
+static func build(
+	_title: String = \"Title\",
+	_message: String = \"This is a debug message, it should not show up in production. If this is shown then we messed up.\",
+	_icon: Texture2D = load(\"res://icon.svg\"),
+	_before: Callable = func() -> void: return,
+	_after: Callable = func() -> void: return
+	
+) -> MessageBox:
+	
+	var box: MessageBox = MESSAGE_BOX.instantiate()
+	box.title = _title
+	box.message = _message
+	box.icon = _icon
+	box.before = _before
+	box.after = _after
+	return box
+
+
+
+func pullup() -> Signal:
+	var tween: Tween = get_tree().create_tween()
+	tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+	tween.tween_property(background_ui, \"modulate:a\", 1, 0.1)
+	tween.set_ease(Tween.EASE_IN)
+	tween.set_trans(Tween.TRANS_BOUNCE)
+	return tween.finished
+
+
+func close() -> void:
+	get_tree().paused = false
+	background_ui.modulate.a = 0
+	icon_ui.modulate.a = 0
+	title_ui.modulate.a = 0
+	message_ui.modulate.a = 0
+	Linker.msglayer.undarken()
+	queue_free()
+
+
+func setup_visuals() -> void:
+	icon_ui.texture = icon
+	title_ui.text = title
+
+func setup_text() -> void:
+	message_ui.text = \"\"
+	message_ui.visible_characters = 0
+	message_ui.visible_characters_behavior = TextServer.VC_CHARS_AFTER_SHAPING
+	
+	if message == null or message.is_empty():
+		message_ui.text = \"Hello, this is a test paragraph for the game. The game which is developed by Youssef and Yassir. This paragraph only serves as a placeholder to show how long we can make a text. The text should be readable and easy to understand and comprehend. Which is the main goal for this whole text box. It should also allow for fairely long strings of texts just in case we have a long monologue, but that's for another day.\"
+	else:
+		message_ui.text = message
+	for letter in message_ui.text:
+		if text_finished == true:
+			break
+		message_ui.visible_characters += 1
+		await get_tree().create_timer(WORD_DELAY, true).timeout
+	text_finished = true
+
+
+func _on_background_gui_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		if text_finished:
+			close()
+		else:
+			message_ui.visible_characters = -1
+			text_finished = true
+"
+
+[sub_resource type="LabelSettings" id="LabelSettings_va4x2"]
+font = ExtResource("3_r7wt0")
+font_size = 44
+font_color = Color(0.33333334, 0.08235294, 0.043137256, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_r7wt0"]
+font = ExtResource("4_uqsny")
+font_size = 30
+font_color = Color(0.33333334, 0.08235294, 0.043137256, 1)
+shadow_color = Color(0.4745098, 0.24313726, 0.11764706, 0.20784314)
+shadow_offset = Vector2(-2, 1)
+
+[node name="MessageBox" type="Control"]
+custom_minimum_size = Vector2(1100, 426)
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -550.0
+offset_top = -426.0
+offset_right = 550.0
+grow_horizontal = 2
+grow_vertical = 0
+script = SubResource("GDScript_dso0q")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1100.0
+offset_bottom = 400.0
+texture = ExtResource("1_jbnq5")
+
+[node name="Icon" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(240, 240)
+layout_mode = 1
+offset_left = 52.0
+offset_top = 52.0
+offset_right = 252.0
+offset_bottom = 252.0
+
+[node name="Title" type="Label" parent="."]
+custom_minimum_size = Vector2(240, 64)
+layout_mode = 0
+offset_left = 52.0
+offset_top = 292.0
+offset_right = 292.0
+offset_bottom = 356.0
+label_settings = SubResource("LabelSettings_va4x2")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Message" type="Label" parent="."]
+layout_mode = 0
+offset_left = 318.0
+offset_top = 52.0
+offset_right = 1048.0
+offset_bottom = 348.0
+label_settings = SubResource("LabelSettings_r7wt0")
+horizontal_alignment = 3
+autowrap_mode = 3
+
+[connection signal="gui_input" from="Background" to="." method="_on_background_gui_input"]

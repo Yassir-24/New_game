@@ -18,7 +18,7 @@ func _ready() -> void:
 	label.text = message
 	if function.is_valid():
 		function.call()
-	Log.send(Log.DEBUG, "Toast is ready: " + message)
+	Log.debug("Toast is ready: " + message)
 
 
 static func cook(toast_type: int, toast_message:String, toast_function: Callable = func() -> void: return) -> Toast:
