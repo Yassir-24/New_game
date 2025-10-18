@@ -1,5 +1,5 @@
 extends VBoxContainer
-class_name ToastBox
+class_name Toaster
 
 var toast_list: Array[Toast] = []
 

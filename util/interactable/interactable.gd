@@ -1,6 +1,17 @@
-extends Node
-class_name Interactable
+### Two main interactable exist:
+# Toast: a bottom right notification that appears, it is ran by adding it to the toast_box
+# code for toast runs in its _ready()
 
-var message_box: MessageBox
+# Messagebox: a stardew valley type of message box that appears and stops the game until is dealt with
+# code for message box runs in open()
+
+extends Area2D
+
+enum Type {TOAST, MESSAGEBOX}
+
+var message: MessageBox
 var toast: Toast
-var is_toast: bool
+var type: Type
+
+func interact() -> void:
+	Log.send(Log.DEBUG, "Interaction happened.")

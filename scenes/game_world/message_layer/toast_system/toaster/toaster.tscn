@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dumibaib7h162"]
 
-[ext_resource type="Script" uid="uid://dqwdav84fdxm0" path="res://scenes/game_world/message_layer/toast_system/toast_box/toast_box.gd" id="1_qtugk"]
+[ext_resource type="Script" uid="uid://dqwdav84fdxm0" path="res://scenes/game_world/message_layer/toast_system/toaster/toaster.gd" id="1_sanw7"]
 
 [node name="ToastBox" type="VBoxContainer"]
 custom_minimum_size = Vector2(562, 562)
@@ -15,4 +15,4 @@ offset_bottom = -25.0
 grow_horizontal = 0
 grow_vertical = 0
 alignment = 2
-script = ExtResource("1_qtugk")
+script = ExtResource("1_sanw7")
