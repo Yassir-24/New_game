@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://bsaqhwbros4tr"]
+
+[node name="FollowComponent" type="Area2D"]

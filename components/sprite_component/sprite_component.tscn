@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://c17jynjo5ghww" path="res://assets/swordman/Sprites/RUN/run_left.png" id="10_r3ub6"]
 [ext_resource type="Texture2D" uid="uid://cpsy1or1yln0s" path="res://assets/swordman/Sprites/RUN/run_right.png" id="11_b24ip"]
 [ext_resource type="Texture2D" uid="uid://dvcwgltnyvr6q" path="res://assets/swordman/Sprites/RUN/run_up.png" id="12_y4w6c"]
-[ext_resource type="Script" uid="uid://dvuxnuakrb3x2" path="res://player/components/sprite_component/sprite_component.gd" id="13_fnr6n"]
+[ext_resource type="Script" uid="uid://dvuxnuakrb3x2" path="res://components/sprite_component/sprite_component.gd" id="13_fnr6n"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5qb1u"]
 atlas = ExtResource("1_abuvx")
