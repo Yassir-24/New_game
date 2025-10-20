@@ -1,3 +1,9 @@
-[gd_scene format=3 uid="uid://bsaqhwbros4tr"]
+[gd_scene load_steps=2 format=3 uid="uid://bsaqhwbros4tr"]
+
+[ext_resource type="Script" uid="uid://bnl5egqrhcb2r" path="res://components/enemies/follow/follow_component.gd" id="1_uytpx"]
 
 [node name="FollowComponent" type="Area2D"]
+script = ExtResource("1_uytpx")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
