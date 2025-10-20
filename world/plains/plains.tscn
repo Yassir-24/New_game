@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=4 uid="uid://bphiybr5atbe2"]
+[gd_scene load_steps=5 format=4 uid="uid://bphiybr5atbe2"]
 
 [ext_resource type="Texture2D" uid="uid://yxgtlxd0b2gb" path="res://world/assets/Medieval_fantasy_32_Sheetform.png" id="1_23ucp"]
+[ext_resource type="PackedScene" uid="uid://bdxd7hbop2kda" path="res://world/plains/pumpkins/pumpkin.tscn" id="2_umdmm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_umdmm"]
 texture = ExtResource("1_23ucp")
@@ -213,3 +214,6 @@ tile_set = SubResource("TileSet_jlpjo")
 [node name="DecoLayer2" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAABAPj/AAADABgAAAA=")
 tile_set = SubResource("TileSet_jlpjo")
+
+[node name="Pumpkin" parent="." instance=ExtResource("2_umdmm")]
+position = Vector2(276, -160)

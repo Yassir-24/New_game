@@ -6,12 +6,15 @@
 # code for message box runs in open()
 
 extends Area2D
+var interactables: Array = []
 
-enum Type {TOAST, MESSAGEBOX}
+func _ready() -> void:
+	for child in get_children():
+		interactables.push_back(child)
 
-var message: MessageBox
-var toast: Toast
-var type: Type
 
 func interact() -> void:
-	Log.debug("Interaction happened.")
+	for interactable: Node in interactables:
+		if interactable.has_method("interact"):
+			await interactable.interact()
+			
