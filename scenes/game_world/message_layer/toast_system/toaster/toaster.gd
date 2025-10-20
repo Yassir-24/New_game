@@ -4,7 +4,7 @@ class_name Toaster
 var toast_list: Array[Toast] = []
 
 func _ready() -> void:
-	pass
+	Linker.toaster = self
 
 func add(toast: Toast) -> void:
 	if toast_list.size() > 5:

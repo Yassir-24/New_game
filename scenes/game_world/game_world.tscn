@@ -34,5 +34,6 @@ shape = SubResource("RectangleShape2D_254f3")
 position = Vector2(-85, 44)
 
 [node name="Player" parent="." instance=ExtResource("1_uie3o")]
+position = Vector2(123, -121)
 
 [node name="MessageLayer" parent="." instance=ExtResource("7_nxv6a")]

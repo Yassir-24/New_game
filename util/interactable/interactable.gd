@@ -6,6 +6,7 @@
 # code for message box runs in open()
 
 extends Area2D
+class_name Interactable
 var interactables: Array = []
 
 func _ready() -> void:
@@ -16,5 +17,14 @@ func _ready() -> void:
 func interact() -> void:
 	for interactable: Node in interactables:
 		if interactable.has_method("interact"):
-			await interactable.interact()
+			Log.debug("BEFORE")
+			interactable.interact()
+			await interactable.finished
+			Log.debug("AFTER")
 			
+
+
+#func _on_area_entered(area: Area2D) -> void:
+	#if area is InteractArea and area.monitoring:
+		#Log.debug("INTERACTION")
+		#interact()

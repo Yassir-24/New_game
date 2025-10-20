@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://ck7ns8s6w1fb1"]
+[gd_scene load_steps=3 format=3 uid="uid://ck7ns8s6w1fb1"]
 
 [ext_resource type="Script" uid="uid://b02857kw6w5gq" path="res://scenes/game_world/message_layer/message_layer.gd" id="1_65vxu"]
+[ext_resource type="PackedScene" uid="uid://dumibaib7h162" path="res://scenes/game_world/message_layer/toast_system/toaster/toaster.tscn" id="2_bt7k7"]
 
 [node name="MessageLayer" type="CanvasLayer"]
 script = ExtResource("1_65vxu")
+
+[node name="ToastBox" parent="." instance=ExtResource("2_bt7k7")]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bdxd7hbop2kda"]
+[gd_scene load_steps=5 format=3 uid="uid://bdxd7hbop2kda"]
 
 [ext_resource type="Texture2D" uid="uid://dbfrkxwnu84iw" path="res://world/plains/pumpkins/pumpkin.png" id="1_jruap"]
 [ext_resource type="PackedScene" uid="uid://pn8jpe0xuj3u" path="res://util/interactable/interactable.tscn" id="2_5n3wq"]
+[ext_resource type="PackedScene" uid="uid://xvdxbr3u2ke" path="res://util/interactable/toast_interactable/toast_interactable.tscn" id="3_7j4p4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7j4p4"]
 size = Vector2(32, 32)
@@ -15,3 +16,6 @@ texture = ExtResource("1_jruap")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
 shape = SubResource("RectangleShape2D_7j4p4")
+
+[node name="ToastInteractable" parent="Interactable" instance=ExtResource("3_7j4p4")]
+message = "You just ate a pumpkin"

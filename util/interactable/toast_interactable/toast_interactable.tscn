@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://xvdxbr3u2ke"]
+
+[ext_resource type="Script" uid="uid://bhhey2w1bpy1m" path="res://util/interactable/toast_interactable/toast_interactable.gd" id="1_otitl"]
+
+[node name="ToastInteractable" type="Node"]
+script = ExtResource("1_otitl")

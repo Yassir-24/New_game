@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cx45g8x2y1xva"]
+[gd_scene load_steps=11 format=3 uid="uid://cx45g8x2y1xva"]
 
 [ext_resource type="Script" uid="uid://dj7344qiir0d2" path="res://player/player.gd" id="1_g6k8r"]
 [ext_resource type="PackedScene" uid="uid://e7t4jdys8x86" path="res://components/player/hitbox/hitbox_component.tscn" id="1_rkbax"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://btbnkfivrlmpv" path="res://components/player/movement/movement_component.tscn" id="3_g1dw6"]
 [ext_resource type="PackedScene" uid="uid://wrrb76v852us" path="res://components/player/camera/camera_component.tscn" id="4_yw30f"]
 [ext_resource type="PackedScene" uid="uid://djjhamxkbg6ot" path="res://components/player/attack/attack_component.tscn" id="5_qjkh3"]
+[ext_resource type="PackedScene" uid="uid://bndarw3gp8pta" path="res://components/player/interact_area/interact_area.tscn" id="8_hg6s5"]
 [ext_resource type="PackedScene" uid="uid://bdlcc2e4jk65u" path="res://components/player/hurtbox/hurtbox_component.tscn" id="8_rgyib"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g1dw6"]
@@ -24,7 +25,8 @@ shape = SubResource("RectangleShape2D_g1dw6")
 [node name="sprite_component" parent="." instance=ExtResource("2_g1dw6")]
 animation = &"idle_down"
 
-[node name="MovementComponent" parent="." node_paths=PackedStringArray("player_sprite") instance=ExtResource("3_g1dw6")]
+[node name="MovementComponent" parent="." node_paths=PackedStringArray("interact_area", "player_sprite") instance=ExtResource("3_g1dw6")]
+interact_area = NodePath("../InteractArea")
 player_sprite = NodePath("../sprite_component")
 
 [node name="CameraComponent" parent="." instance=ExtResource("4_yw30f")]
@@ -38,3 +40,5 @@ player_sprite = NodePath("../sprite_component")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
 position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_hg6s5")
+
+[node name="InteractArea" parent="." instance=ExtResource("8_hg6s5")]

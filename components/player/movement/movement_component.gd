@@ -1,10 +1,14 @@
 extends Node2D
 class_name PlayerMovementComponent
 
+@export var interact_area: InteractArea
 
 const BASE_SPEED: int = 250
 var speed_mult: float = 1.0
-var direction: Vector2
+var direction: Vector2:
+	set(value):
+		direction = value
+		interact_area.direction = value
 var previous_direction: Vector2
 
 
