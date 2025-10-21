@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cqsio2vie62d5"]
+
+[ext_resource type="Script" uid="uid://bphx2b0w14u3o" path="res://util/interactable/delete/delete.gd" id="1_83py1"]
+
+[node name="Delete" type="Node"]
+script = ExtResource("1_83py1")

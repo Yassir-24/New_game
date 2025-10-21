@@ -5,5 +5,5 @@ signal finished
 @export var message: String
 
 func interact() -> void:
-	Linker.toaster.add(Toast.cook(type, message))
-	emit_signal("finished")
+	Linker.toaster.add(type, message)
+	finished.emit.call_deferred()

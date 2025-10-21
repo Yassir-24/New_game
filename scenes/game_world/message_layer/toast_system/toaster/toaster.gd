@@ -6,7 +6,8 @@ var toast_list: Array[Toast] = []
 func _ready() -> void:
 	Linker.toaster = self
 
-func add(toast: Toast) -> void:
+func add(type: Toast.ToastType, message: String) -> void:
+	var toast: Toast = Toast.cook(type, message)
 	if toast_list.size() > 5:
 		var first: Toast = toast_list.pop_front()
 		if is_instance_valid(first):

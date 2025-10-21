@@ -6,25 +6,25 @@ var is_logging_info: bool = true
 var is_logging_warnings: bool = true
 var is_logging_errors: bool = true
 
-func debug(message: String) -> void:
+func debug(message: Variant) -> void:
 	if not is_logging or not is_logging_debug:
 		return
-	print(_get_time() + "[DBG] " + message)
+	print(_get_time() + "[DBG] " + str(message))
 
-func info(message: String) -> void:
+func info(message: Variant) -> void:
 	if not is_logging or not is_logging_info:
 		return
-	print(_get_time() + "[INF] " + message)
+	print(_get_time() + "[INF] " + str(message))
 
-func warn(message: String) -> void:
+func warn(message: Variant) -> void:
 	if not is_logging or not is_logging_warnings:
 		return
-	print(_get_time() + "[WRN] " + message)
+	print(_get_time() + "[WRN] " + str(message))
 
-func error(message: String) -> void:
+func error(message: Variant) -> void:
 	if not is_logging or not is_logging_errors:
 		return
-	print(_get_time() + "[ERR] " + message)
+	print(_get_time() + "[ERR] " + str(message))
 
 func _get_time() -> String:
 	var time: Dictionary = Time.get_datetime_dict_from_system()
