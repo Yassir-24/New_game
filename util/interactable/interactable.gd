@@ -10,17 +10,14 @@ class_name Interactable
 var interactables: Array = []
 
 func _ready() -> void:
-	for child in get_children():
-		interactables.push_back(child)
+	interactables = get_children()
 
 
 func interact() -> void:
 	for interactable: Node in interactables:
 		if interactable.has_method("interact"):
-			Log.debug("BEFORE")
 			interactable.interact()
 			await interactable.finished
-			Log.debug("AFTER")
 			
 
 
